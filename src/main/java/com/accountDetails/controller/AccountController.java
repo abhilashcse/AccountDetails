@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.accountDetails.client.AuthorizationMicroserviceClient;
+import com.accountDetails.client.CustomerRegistrationMicroserviceClient;
 import com.accountDetails.dto.CustomerProfileDTO;
 import com.accountDetails.model.Account;
 import com.accountDetails.model.JWTResponse;
@@ -22,12 +22,12 @@ public class AccountController {
 	private AccountService accountService;
 	
 	@Autowired
-	AuthorizationMicroserviceClient authorizationMicroserviceClient;
+	CustomerRegistrationMicroserviceClient customerRegistrationMicroserviceClient;
 	
 	@PutMapping("/editDetails")
 	public String editAccountDetails(@RequestBody CustomerProfileDTO customerProfileDTO, @RequestHeader(name="Authorization") String token) {
 		JWTResponse jwtResponse = new JWTResponse(token);
-		String res = authorizationMicroserviceClient.validateToken(jwtResponse);
+		String res = customerRegistrationMicroserviceClient.validateToken(jwtResponse);
 		String [] response = res.split(" ");
 		if(response[1].equals("true")) {
 			return accountService.editAccountDtails(customerProfileDTO);
@@ -40,7 +40,7 @@ public class AccountController {
 	@GetMapping("/accountDetails")
 	public Account accountDetails(@RequestHeader(name="Authorization") String token) {
 		JWTResponse jwtResponse = new JWTResponse(token);
-		String res = authorizationMicroserviceClient.validateToken(jwtResponse);
+		String res = customerRegistrationMicroserviceClient.validateToken(jwtResponse);
 		String [] response = res.split(" ");
 		if(response[1].equals("true")) {
 			return accountService.accountDetails(response[0]);
