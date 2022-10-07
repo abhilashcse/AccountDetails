@@ -29,8 +29,8 @@ public class AccountController {
 		JWTResponse jwtResponse = new JWTResponse(token);
 		String res = customerRegistrationMicroserviceClient.validateToken(jwtResponse);
 		String [] response = res.split(" ");
-		if(response[1].equals("true")) {
-			return accountService.editAccountDtails(customerProfileDTO);
+		if("true".equals(response[1])) {
+			return accountService.editAccountDtails(customerProfileDTO,response[0]);
 		}
 		else {
 			return "not allowed";

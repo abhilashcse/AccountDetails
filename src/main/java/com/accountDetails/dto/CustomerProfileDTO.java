@@ -2,7 +2,6 @@ package com.accountDetails.dto;
 
 public class CustomerProfileDTO{
     public String name;
-    public String username;
     public String password;
     public String address;
     public String state;
@@ -24,12 +23,6 @@ public class CustomerProfileDTO{
 	}
 	public void setName(String name) {
 		this.name = name;
-	}
-	public String getUsername() {
-		return username;
-	}
-	public void setUsername(String username) {
-		this.username = username;
 	}
 	public String getPassword() {
 		return password;
