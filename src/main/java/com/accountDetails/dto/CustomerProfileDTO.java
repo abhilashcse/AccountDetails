@@ -72,6 +72,24 @@ public class CustomerProfileDTO{
 	public void setAccountType(String accountType) {
 		this.accountType = accountType;
 	}
+	public CustomerProfileDTO(String name, String password, String address, String state, String country,
+			String emailAddress, String pan, String dateOfBirth, String accountType, String mobileNo) {
+		super();
+		this.name = name;
+		this.password = password;
+		this.address = address;
+		this.state = state;
+		this.country = country;
+		this.emailAddress = emailAddress;
+		this.pan = pan;
+		this.dateOfBirth = dateOfBirth;
+		this.accountType = accountType;
+		MobileNo = mobileNo;
+	}
+	public CustomerProfileDTO() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
 	
 }
 

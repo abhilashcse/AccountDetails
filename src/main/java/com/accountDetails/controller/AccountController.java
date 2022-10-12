@@ -42,7 +42,7 @@ public class AccountController {
 		JWTResponse jwtResponse = new JWTResponse(token);
 		String res = customerRegistrationMicroserviceClient.validateToken(jwtResponse);
 		String [] response = res.split(" ");
-		if(response[1].equals("true")) {
+		if("true".equals(response[1])) {
 			return accountService.accountDetails(response[0]);
 		}
 		else {
